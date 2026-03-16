@@ -29,18 +29,9 @@ app.js
 package.json
 
 
-
-🔧 Como instalar e rodar
-- Clone o repositório:
-git clone https://github.com/SEU-USUARIO/NOME-DO-REPO.git
-- Entre na pasta:
-cd NOME-DO-REPO
-- Instale as dependências:
-npm install
-- Inicie o servidor:
-node app.js
 - Acesse no navegador:
 http://localhost:3000/login
+http://localhost:3000/paginainicial
 
 
 
