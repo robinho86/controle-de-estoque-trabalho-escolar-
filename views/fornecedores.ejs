@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Fornecedores</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1 style="text-align:center;">Cadastro de Fornecedores</h1>
+
+  <form action="/fornecedores/add" method="POST" style="text-align:center;">
+    <input type="text" name="nome" placeholder="Nome" required>
+    <input type="text" name="telefone" placeholder="Telefone" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="text" name="produto" placeholder="Produto" required>
+    <button type="submit">Adicionar</button>
+  </form>
+
+  <table>
+    <tr>
+      <th>ID</th><th>Nome</th><th>Telefone</th><th>Email</th><th>Produto</th><th>Ações</th>
+    </tr>
+    <% fornecedores.forEach(f => { %>
+      <tr>
+        <td><%= f.id %></td>
+        <td><%= f.nome %></td>
+        <td><%= f.telefone %></td>
+        <td><%= f.email %></td>
+        <td><%= f.produto %></td>
+        <td>
+          <form action="/fornecedores/delete/<%= f.id %>" method="POST" style="display:inline;">
+            <button type="submit">Excluir</button>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+  </table>
+</body>
+</html>

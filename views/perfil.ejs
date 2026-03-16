@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Perfil</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1 style="text-align:center;">Perfil do Usuário</h1>
+  <% if (usuario) { %>
+    <div style="text-align:center;">
+      <p><strong>ID:</strong> <%= usuario.id %></p>
+      <p><strong>Nome:</strong> <%= usuario.nome %></p>
+      <p><strong>Email:</strong> <%= usuario.email %></p>
+      <p><strong>Telefone:</strong> <%= usuario.telefone %></p>
+    </div>
+  <% } else { %>
+    <p style="text-align:center;">Nenhum usuário logado.</p>
+  <% } %>
+</body>
+</html>

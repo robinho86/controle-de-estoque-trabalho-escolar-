@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Estoque</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <h1 style="text-align:center;">Controle de Estoque</h1>
+
+  <form action="/estoque/add" method="POST" style="text-align:center;">
+    <input type="text" name="nome" placeholder="Nome do produto" required>
+    <input type="number" name="quantidade" placeholder="Quantidade" required>
+    <button type="submit">Adicionar</button>
+  </form>
+
+  <table>
+    <tr>
+      <th>ID</th><th>Nome</th><th>Quantidade</th><th>Adicionado  por</th><th>Ações</th>
+    </tr>
+    <% itens.forEach(item => { %>
+      <tr>
+        <td><%= item.id %></td>
+        <td><%= item.nome %></td>
+        <td><%= item.quantidade %></td>
+        <td><%= item.adicionadoPor %></td>
+        <td>
+          <form action="/estoque/delete/<%= item.id %>" method="POST" style="display:inline;">
+            <button type="submit">Excluir</button>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+  </table>
+</body>
+</html>

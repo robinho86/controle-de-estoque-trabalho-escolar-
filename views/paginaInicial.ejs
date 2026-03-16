@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Página Inicial</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="sidebar">
+    <div>
+      <h2>Menu</h2>
+      <ul class="nav">
+        <li><a href="/paginaInicial" class="active">Início</a></li>
+        <li><a href="/fornecedores">Fornecedores</a></li>
+        <li><a href="/estoque">Estoque</a></li>
+      </ul>
+    </div>
+
+    <div class="profile">
+      <button onclick="toggleDropdown()">Opções ▼</button>
+      <ul class="dropdown" id="dropdownMenu">
+        <li><a href="/login">Login</a></li>
+        <li><a href="/cadastro">Cadastro</a></li>
+        <li><a href="/perfil">Perfil</a></li>
+        <li><a href="/login/logout">Sair</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="margin-left:260px; padding:20px;">
+    <h1>Bem-vindo, <%= usuario ? usuario.nome : "Visitante" %></h1>
+    <% if (ultimasRetiradas && ultimasRetiradas.length > 0) { %>
+      <h3>Últimas adições ao estoque:</h3>
+      <ul>
+        <% ultimasRetiradas.forEach(r => { %>
+          <li><%= r.retiradoPor %> adicionou <%= r.nome %> (Qtd: <%= r.quantidade %>)</li>
+        <% }) %>
+      </ul>
+    <% } %>
+  </div>
+
+  <script>
+    function toggleDropdown() {
+      const menu = document.getElementById("dropdownMenu");
+      menu.style.display = menu.style.display === "block" ? "none" : "block";
+    }
+  </script>
+</body>
+</html>
