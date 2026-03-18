@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const session = require('express-session');
-const db = require('./models/db');
+const db = require('./models/database');
 
 const app = express();
 
@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Sessão
+
 app.use(session({
   secret: 'segredo-estoque',
   resave: false,
@@ -27,7 +27,13 @@ app.use('/fornecedores', require('./routes/fornecedores'));
 
 app.get('/paginaInicial', async (req, res) => {
   const itens = await db.getItens();
-  const ultimasRetiradas = itens.slice(-5); // últimas 5 retiradas
+  const ultimasRetiradas = itens.slice(-10); 
+  res.render('paginaInicial', { usuario: req.session.usuario, ultimasRetiradas });
+});
+
+app.get('/', async (req, res) => {
+  const itens = await db.getItens();
+  const ultimasRetiradas = itens.slice(-10); 
   res.render('paginaInicial', { usuario: req.session.usuario, ultimasRetiradas });
 });
 

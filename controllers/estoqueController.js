@@ -1,0 +1,21 @@
+const db = require('../models/database');
+
+exports.listar = async (req, res) => {
+  if (!req.session.usuario) return res.redirect('/login');
+  const itens = await db.getItens();
+  res.render('estoque', { itens });
+};
+
+exports.adicionar = async (req, res) => {
+  if (!req.session.usuario) return res.redirect('/login');
+  const { nome, quantidade } = req.body;
+  await db.addItem(nome, quantidade, req.session.usuario.nome);
+  res.redirect('/estoque');
+};
+
+exports.remover = async (req, res) => {
+  if (!req.session.usuario) return res.redirect('/login');
+  const { id } = req.params;
+  await db.deleteItem(id);
+  res.redirect('/estoque');
+};
