@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const fornecedoresController = require('../controllers/fornecedoresController');
+const fornecedoresController = require('../src/controllers/fornecedoresController');
 
 // Listar fornecedores
 router.get('/', fornecedoresController.listar);

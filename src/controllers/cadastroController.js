@@ -1,4 +1,4 @@
-const db = require('../models/database');
+const db = require('../../database/database');
 
 exports.formCadastro = (req, res) => {
   res.render('cadastro');

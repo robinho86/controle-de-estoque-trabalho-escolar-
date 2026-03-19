@@ -1,4 +1,4 @@
-const db = require('../models/database');
+const db = require('../../database/database');
 
 exports.listar = async (req, res) => {
   if (!req.session.usuario) return res.redirect('/login');

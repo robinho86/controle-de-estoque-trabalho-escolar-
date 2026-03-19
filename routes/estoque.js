@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const estoqueController = require('../controllers/estoqueController');
+const estoqueController = require('../src/controllers/estoqueController');
 
 // Listar itens do estoque
 router.get('/', estoqueController.listar);
