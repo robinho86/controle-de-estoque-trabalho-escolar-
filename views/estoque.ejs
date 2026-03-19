@@ -8,15 +8,16 @@
 <body>
   <h1 style="text-align:center;">Controle de Estoque</h1>
 
-  <form action="/estoque/add" method="POST" style="text-align:center;">
-    <input type="text" name="nome" placeholder="Nome do produto" required>
-    <input type="number" name="quantidade" placeholder="Quantidade" required>
-    <button type="submit">Adicionar</button>
+  <form action="/estoque/add" method="POST" style="text-align:center;">;
+    <input type="text" name="nome" placeholder="Nome do produto" required>;
+    <input type="number" name="quantidade" placeholder="Quantidade" required>;
+    <input type="text" name="adicionadoPor" placeholder="Adicionado por (nome do usuário)" required>;   
+    <button type="submit">Adicionar</button>;
   </form>
 
   <table>
     <tr>
-      <th>ID</th><th>Nome</th><th>Quantidade</th><th>Adicionado  por</th><th>Ações</th>
+      <th>ID</th><th>Nome</th><th>Quantidade</th><th>Adicionado por</th><th>Ações</th>
     </tr>
     <% itens.forEach(item => { %>
       <tr>
@@ -25,7 +26,7 @@
         <td><%= item.quantidade %></td>
         <td><%= item.adicionadoPor %></td>
         <td>
-          <form action="/estoque/delete/<%= item.id %>" method="POST" style="display:inline;">
+          <form action="/estoque/delete/<%= item.id %>" method="POST" style="display:contents;">
             <button type="submit">Excluir</button>
           </form>
         </td>

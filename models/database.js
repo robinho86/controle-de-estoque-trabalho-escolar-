@@ -2,14 +2,14 @@ const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./estoque.db');
 
 db.serialize(() => {
-  db.run("CREATE TABLE IF NOT EXISTS usuarios (id INTEGER PRIMARY KEY, nome TEXT, email TEXT, telefone TEXT, senha TEXT)");
+  db.run("CREATE TABLE IF NOT EXISTS usuarios (id INTEGER PRIMARY KEY, nome TEXT, email TEXT, telefone TEXT, senha TEXT, setor TEXT, funcao TEXT)");
   db.run("CREATE TABLE IF NOT EXISTS fornecedores (id INTEGER PRIMARY KEY, nome TEXT, telefone TEXT, email TEXT, produto TEXT)");
-  db.run("CREATE TABLE IF NOT EXISTS itens (id INTEGER PRIMARY KEY, nome TEXT, quantidade INTEGER, retiradoPor TEXT)");
+  db.run("CREATE TABLE IF NOT EXISTS itens (id INTEGER PRIMARY KEY, nome TEXT, quantidade INTEGER, adicionadoPor TEXT)");
 });
 
 // Usuários
-exports.addUsuario = (nome, email, telefone, senha) => new Promise((resolve, reject) => {
-  db.run("INSERT INTO usuarios (nome, email, telefone, senha) VALUES (?, ?, ?, ?)", [nome, email, telefone, senha], function(err) {
+exports.addUsuario = (nome, email, telefone, senha, setor, funcao) => new Promise((resolve, reject) => {
+  db.run("INSERT INTO usuarios (nome, email, telefone, senha, setor, funcao) VALUES (?, ?, ?, ?, ?, ?)", [nome, email, telefone, senha, setor, funcao], function(err) {
     if (err) reject(err);
     resolve(this.lastID);
   });
@@ -40,8 +40,8 @@ exports.getItens = () => new Promise((resolve, reject) => {
   db.all("SELECT * FROM itens", [], (err, rows) => err ? reject(err) : resolve(rows));
 });
 
-exports.addItem = (nome, quantidade, retiradoPor) => new Promise((resolve, reject) => {
-  db.run("INSERT INTO itens (nome, quantidade, retiradoPor) VALUES (?, ?, ?)", [nome, quantidade, retiradoPor], function(err) {
+exports.addItem = (nome, quantidade, adicionadoPor) => new Promise((resolve, reject) => {
+  db.run("INSERT INTO itens (nome, quantidade, adicionadoPor) VALUES (?, ?, ?)", [nome, quantidade, adicionadoPor], function(err) {
     if (err) reject(err);
     resolve(this.lastID);
   });

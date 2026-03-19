@@ -5,7 +5,7 @@ exports.formCadastro = (req, res) => {
 };
 
 exports.cadastrar = async (req, res) => {
-  const { nome, email, telefone, senha } = req.body;
-  await db.addUsuario(nome, email, telefone, senha);
+  const { nome, email, telefone, senha, setor, funcao } = req.body;
+  await db.addUsuario(nome, email, telefone, senha, setor, funcao);
   res.redirect('/login');
 };

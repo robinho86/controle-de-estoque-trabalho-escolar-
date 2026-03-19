@@ -8,8 +8,8 @@ exports.listar = async (req, res) => {
 
 exports.adicionar = async (req, res) => {
   if (!req.session.usuario) return res.redirect('/login');
-  const { nome, quantidade } = req.body;
-  await db.addItem(nome, quantidade, req.session.usuario.nome);
+  const { nome, quantidade, adicionadoPor } = req.body;
+  await db.addItem(nome, quantidade, adicionadoPor);
   res.redirect('/estoque');
 };
 

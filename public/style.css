@@ -1,20 +1,19 @@
-Boa lembrança, Robson! O arquivo style.css é essencial para deixar o sistema organizado e bonito. Vou te passar um exemplo completo que você pode colocar dentro da pasta /public/style.css.
 
 📂 public/style.css
-/* Estilo geral */
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   background-color: #f8f9fa;
 }
 
-/* Títulos */
+
 h1, h3 {
   text-align: center;
   color: #333;
 }
 
-/* Formulários */
+
 form {
   margin: 20px auto;
   padding: 20px;
@@ -44,7 +43,7 @@ form button:hover {
   background-color: #0056b3;
 }
 
-/* Sidebar */
+
 .sidebar {
   width: 250px;
   background-color: #e9ecef;
@@ -89,7 +88,7 @@ form button:hover {
   background-color: #d6d8db;
 }
 
-/* Perfil / Dropdown */
+
 .profile {
   padding: 15px 20px;
   border-top: 1px solid #ddd;
@@ -130,7 +129,7 @@ form button:hover {
   background-color: #f1f1f1;
 }
 
-/* Tabelas */
+
 table {
   margin: 20px auto;
   border-collapse: collapse;
@@ -149,14 +148,3 @@ th {
 }
 
 
-
-✅ Como usar
-- Crie a pasta public na raiz do projeto.
-- Dentro dela, salve esse arquivo como style.css.
-- Já está referenciado nas suas views com:
-<link rel="stylesheet" href="/style.css">
-
-
-
-👉 Com isso, todas as páginas (login, cadastro, estoque, fornecedores, perfil, página inicial e sair) vão herdar esse estilo.
-Quer que eu prepare também um README.md para você colocar no GitHub explicando como instalar e rodar o sistema? Isso ajuda muito quem for clonar o projeto.
