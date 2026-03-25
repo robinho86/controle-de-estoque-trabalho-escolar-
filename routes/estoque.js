@@ -11,7 +11,7 @@ router.post('/add', estoqueController.adicionar);
 // Remover item
 router.post('/delete/:id', estoqueController.remover);
 
-// Formulário de edição (mostra o item na mesma página)
+// Formulário de edição
 router.get('/edit/:id', estoqueController.formEditar);
 
 // Salvar edição
