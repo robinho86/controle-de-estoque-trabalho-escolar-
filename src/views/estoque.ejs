@@ -4,34 +4,60 @@
   <meta charset="UTF-8">
   <title>Estoque</title>
   <link rel="stylesheet" href="/style.css">
+  <style>
+    button { padding: 5px 10px; cursor: pointer; }
+    .btn-excluir { background-color: red; color: white; border: none; }
+    .btn-editar { background-color: blue; color: white; border: none; }
+  </style>
 </head>
 <body>
   <h1 style="text-align:center;">Controle de Estoque</h1>
 
-  <form action="/estoque/add" method="POST" style="text-align:center;">;
-    <input type="text" name="nome" placeholder="Nome do produto" required>;
-    <input type="number" name="quantidade" placeholder="Quantidade" required>;
-    <input type="text" name="adicionadoPor" placeholder="Adicionado por (nome do usuário)" required>;   
-    <button type="submit">Adicionar</button>;
+  <!-- Formulário para adicionar -->
+  <form action="/estoque/add" method="POST" style="text-align:center;">
+    <input type="text" name="produto" placeholder="Produto" required>
+    <input type="number" name="quantidade" placeholder="Quantidade" required>
+    <input type="text" name="adicionadoPor" placeholder="Adicionado por (nome do usuário)" required>
+    <button type="submit">Adicionar</button>
   </form>
 
+  <!-- Tabela de itens -->
   <table>
     <tr>
-      <th>ID</th><th>Nome</th><th>Quantidade</th><th>Adicionado por</th><th>Ações</th>
+      <th>ID</th><th>Produto</th><th>Quantidade</th><th>Adicionado por</th><th>Excluir</th><th>Editar</th>
     </tr>
     <% itens.forEach(item => { %>
       <tr>
         <td><%= item.id %></td>
-        <td><%= item.nome %></td>
+        <td><%= item.produto %></td>
         <td><%= item.quantidade %></td>
         <td><%= item.adicionadoPor %></td>
         <td>
           <form action="/estoque/delete/<%= item.id %>" method="POST" style="display:contents;">
-            <button type="submit">Excluir</button>
+            <button type="submit" class="btn-excluir">Excluir</button>
           </form>
+        </td>
+        <td>
+          <a href="/estoque/edit/<%= item.id %>">
+            <button type="button" class="btn-editar">Editar</button>
+          </a>
         </td>
       </tr>
     <% }) %>
   </table>
+
+  <!-- Formulário de edição embutido -->
+  <% if (typeof item !== 'undefined') { %>
+    <h2 style="text-align:center;">Editar Produto</h2>
+    <form action="/estoque/edit/<%= item.id %>" method="POST" style="text-align:center;">
+      <label>Produto:</label>
+      <input type="text" name="produto" value="<%= item.produto %>" required>
+
+      <label>Quantidade:</label>
+      <input type="number" name="quantidade" value="<%= item.quantidade %>" required>
+
+      <button type="submit">Salvar</button>
+    </form>
+  <% } %>
 </body>
 </html>

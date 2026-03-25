@@ -8,8 +8,24 @@ exports.listar = async (req, res) => {
 
 exports.adicionar = async (req, res) => {
   if (!req.session.usuario) return res.redirect('/login');
-  const { nome, quantidade, adicionadoPor } = req.body;
-  await db.addItem(nome, quantidade, adicionadoPor);
+  const { produto, quantidade, adicionadoPor } = req.body;
+  await db.addItem(produto, quantidade, adicionadoPor);
+  res.redirect('/estoque');
+};
+
+exports.formEditar = async (req, res) => {
+  if (!req.session.usuario) return res.redirect('/login');
+  const { id } = req.params;
+  const item = await db.getItemById(id);
+  const itens = await db.getItens();
+  res.render('estoque', { itens, item }); // 🔹 passa lista + item
+};
+
+exports.editar = async (req, res) => {
+  if (!req.session.usuario) return res.redirect('/login');
+  const { id } = req.params;
+  const { produto, quantidade } = req.body;
+  await db.updateItem(id, produto, quantidade);
   res.redirect('/estoque');
 };
 

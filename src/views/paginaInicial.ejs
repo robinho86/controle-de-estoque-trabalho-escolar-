@@ -29,14 +29,7 @@
 
   <div style="margin-left:260px; padding:20px;">
     <h1>Bem-vindo, <%= usuario ? usuario.nome : "Visitante" %></h1>
-    <% if (ultimasRetiradas && ultimasRetiradas.length > 0) { %>
-      <h3>Últimas adições ao estoque:</h3>
-      <ul>
-        <% ultimasRetiradas.forEach(r => { %>
-          <li><%= r.retiradoPor %> adicionou <%= r.nome %> (Qtd: <%= r.quantidade %>)</li>
-        <% }) %>
-      </ul>
-    <% } %>
+    <p>Use o menu lateral para navegar entre as seções de Fornecedores e Estoque.</p>
   </div>
 
   <script>

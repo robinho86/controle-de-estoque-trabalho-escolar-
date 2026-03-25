@@ -11,4 +11,10 @@ router.post('/add', estoqueController.adicionar);
 // Remover item
 router.post('/delete/:id', estoqueController.remover);
 
+// Formulário de edição (mostra o item na mesma página)
+router.get('/edit/:id', estoqueController.formEditar);
+
+// Salvar edição
+router.post('/edit/:id', estoqueController.editar);
+
 module.exports = router;

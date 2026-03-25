@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <title>Fornecedores</title>
   <link rel="stylesheet" href="/style.css">
+  <style>
+    button { padding: 5px 10px; cursor: pointer; }
+    .btn-excluir { background-color: red; color: white; border: none; }
+    .btn-editar { background-color: blue; color: white; border: none; }
+  </style>
 </head>
 <body>
   <h1 style="text-align:center;">Cadastro de Fornecedores</h1>
@@ -18,7 +23,7 @@
 
   <table>
     <tr>
-      <th>ID</th><th>Nome</th><th>Telefone</th><th>Email</th><th>Produto</th><th>Ações</th>
+      <th>ID</th><th>Nome</th><th>Telefone</th><th>Email</th><th>Produto</th><th>Excluir</th><th>Editar</th>
     </tr>
     <% fornecedores.forEach(f => { %>
       <tr>
@@ -29,11 +34,35 @@
         <td><%= f.produto %></td>
         <td>
           <form action="/fornecedores/delete/<%= f.id %>" method="POST" style="display:contents;">
-            <button type="submit">Excluir</button>
+            <button type="submit" class="btn-excluir">Excluir</button>
           </form>
+        </td>
+        <td>
+          <a href="/fornecedores/edit/<%= f.id %>">
+            <button type="button" class="btn-editar">Editar</button>
+          </a>
         </td>
       </tr>
     <% }) %>
   </table>
+
+  <% if (typeof fornecedor !== 'undefined') { %>
+    <h2 style="text-align:center;">Editar Fornecedor</h2>
+    <form action="/fornecedores/edit/<%= fornecedor.id %>" method="POST" style="text-align:center;">
+      <label>Nome:</label>
+      <input type="text" name="nome" value="<%= fornecedor.nome %>" required>
+
+      <label>Telefone:</label>
+      <input type="text" name="telefone" value="<%= fornecedor.telefone %>" required>
+
+      <label>Email:</label>
+      <input type="text" name="email" value="<%= fornecedor.email %>" required>
+
+      <label>Produto:</label>
+      <input type="text" name="produto" value="<%= fornecedor.produto %>" required>
+
+      <button type="submit">Salvar</button>
+    </form>
+  <% } %>
 </body>
 </html>

@@ -19,3 +19,19 @@ exports.remover = async (req, res) => {
   await db.deleteFornecedor(id);
   res.redirect('/fornecedores');
 };
+
+exports.formEditar = async (req, res) => {
+  if (!req.session.usuario) return res.redirect('/login');
+  const { id } = req.params;
+  const fornecedor = await db.getFornecedorById(id);
+  const fornecedores = await db.getFornecedores();
+  res.render('fornecedores', { fornecedores, fornecedor }); // 
+};
+
+exports.editar = async (req, res) => {
+  if (!req.session.usuario) return res.redirect('/login');
+  const { id } = req.params;
+  const { nome, telefone, email, produto } = req.body;
+  await db.updateFornecedor(id, nome, telefone, email, produto);
+  res.redirect('/fornecedores');
+};
