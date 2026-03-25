@@ -6,11 +6,12 @@ exports.listar = async (req, res) => {
   res.render('estoque', { itens });
 };
 
-exports.adicionar = async (req, res) => {
+exports.adicionar = async (req, res,) => {
   if (!req.session.usuario) return res.redirect('/login');
   const { produto, quantidade, adicionadoPor } = req.body;
   await db.addItem(produto, quantidade, adicionadoPor);
   res.redirect('/estoque');
+ 
 };
 
 exports.formEditar = async (req, res) => {

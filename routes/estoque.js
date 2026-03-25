@@ -2,11 +2,22 @@ const express = require('express');
 const router = express.Router();
 const estoqueController = require('../src/controllers/estoqueController');
 
-// Listar itens do estoque
-router.get('/', estoqueController.listar);
+function midlewareestoque(req, res, next) {
+    console.log('Acessando rota de estoque');
+    next();
+}
 
+// Listar itens do estoque
+router.get('/', midlewareestoque, estoqueController.listar);
+
+
+
+function midlewareestoqueadd(req, res, next) {
+    console.log('Adicionando item ao estoque');
+    next();
+}
 // Adicionar item
-router.post('/add', estoqueController.adicionar);
+router.post('/add', midlewareestoqueadd, estoqueController.adicionar);
 
 // Remover item
 router.post('/delete/:id', estoqueController.remover);

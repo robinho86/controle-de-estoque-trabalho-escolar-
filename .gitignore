@@ -1,4 +1,5 @@
-.env
+git add .gitignore.env
 node_modules
 estoque.db
+
 

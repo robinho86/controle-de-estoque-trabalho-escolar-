@@ -2,8 +2,14 @@ const express = require('express');
 const router = express.Router();
 const fornecedoresController = require('../src/controllers/fornecedoresController');
 
+
+
+function midlewarefornecedores(req, res, next) {
+    console.log('Acessando rota de fornecedores');
+    next();
+}
 // Listar fornecedores
-router.get('/', fornecedoresController.listar);
+router.get('/', midlewarefornecedores, fornecedoresController.listar);
 
 // Adicionar fornecedor
 router.post('/add', fornecedoresController.adicionar);

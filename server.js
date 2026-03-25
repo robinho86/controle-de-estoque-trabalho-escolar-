@@ -53,4 +53,10 @@ app.get('/sair', (req, res) => {
   res.render('sair');
 });
 
+app.use((req, res, next) => {
+  res.status(404).sendFile(path.join(__dirname, 'src', 'main', 'resources', 'static', '404.html'));
+});
+
+
+
 app.listen(3000, () => console.log("Servidor rodando em http://localhost:3000"));
