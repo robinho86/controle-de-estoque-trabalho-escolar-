@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-.idea/
+.env
+node_modules
+estoque.db
 
-=======
-.ENV
-NODE_MODULES/
-ESTOQUE.DB
->>>>>>> 05f813425596c5b683368bf9a2d95abbde5d258a
