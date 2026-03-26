@@ -11,6 +11,7 @@
   </style>
 </head>
 <body>
+
   <h1 style="text-align:center;">Controle de Estoque</h1>
 
   <form action="/estoque/add" method="POST" style="text-align:center;">
@@ -20,7 +21,7 @@
     <button type="submit">Adicionar</button>
   </form>
 
-  <!-- Tabela de itens -->
+  
   <table>
     <tr>
       <th>ID</th><th>Produto</th><th>Quantidade</th><th>Adicionado por</th><th>Excluir</th><th>Editar</th>
@@ -43,7 +44,7 @@
         </td>
       </tr>
     <% }) %>
-  </table>
+  </table> 
 
   
   <% if (typeof item !== 'undefined') { %>

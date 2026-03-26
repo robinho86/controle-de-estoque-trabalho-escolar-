@@ -147,4 +147,9 @@ th {
   color: white;
 }
 
-
+.container1 {
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center;     /* Centraliza verticalmente */
+  height: 100vh;           /* Ocupa toda a altura da viewport */
+}

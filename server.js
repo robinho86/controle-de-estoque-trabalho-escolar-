@@ -48,13 +48,19 @@ app.get('/perfil', (req, res) => {
   res.render('perfil', { usuario: req.session.usuario });
 });
 
-app.get('/sair', (req, res) => {
+app.get('/sair', (req, res, next) => {
   req.session.destroy();
   res.render('sair');
 });
 
+function midlewaresair(req, res, next) {
+    console.log('o usuario saiu do sistema');
+  next();
+}
+
+
 app.use((req, res, next) => {
-  res.status(404).sendFile(path.join(__dirname, 'src', 'main', 'resources', 'static', '404.html'));
+  res.status(404).render('404.ejs');
 });
 
 
